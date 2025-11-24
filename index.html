@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SKYKNOCK — Official Site</title>
+  <meta name="description" content="Skyknock — British Indian producer & DJ. Melodic house & techno inspired by nature." />
+
+  <style>
+    /* ======================
+       SKYKNOCK — Minimal Cinematic Theme
+       Single-file HTML + CSS
+       ====================== */
+
+    :root{
+      --bg: #050607;
+      --bg-soft: #0b0f11;
+      --text: #e7ecef;
+      --muted: #aab3b8;
+      --line: rgba(255,255,255,0.08);
+      --accent: #7fd1c9; /* soft aquatic green */
+      --accent-2:#c6a7ff; /* subtle violet */
+      --maxw: 1100px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* NAV */
+    .nav{
+      position:fixed; top:0; left:0; right:0; z-index:50;
+      background: linear-gradient(to bottom, rgba(5,6,7,0.92), rgba(5,6,7,0.55), transparent);
+      backdrop-filter: blur(6px);
+    }
+    .nav-wrap{
+      max-width:var(--maxw); margin:0 auto; padding:14px 20px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      font-weight:700; letter-spacing:0.22em; font-size:14px; text-transform:uppercase;
+    }
+    .nav-links{
+      display:flex; gap:16px; font-size:14px; color:var(--muted);
+    }
+    .nav-links a{padding:8px 10px; border-radius:999px; transition:0.2s ease;}
+    .nav-links a:hover{color:var(--text); background:rgba(255,255,255,0.06);}
+    .nav-cta{
+      display:flex; gap:8px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 14px; border-radius:999px; font-size:14px; font-weight:600;
+      border:1px solid var(--line); background:rgba(255,255,255,0.02);
+      transition:0.2s ease; cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,0.06);}
+    .btn-primary{
+      background:linear-gradient(135deg, rgba(127,209,201,0.18), rgba(198,167,255,0.18));
+      border-color:rgba(127,209,201,0.5);
+      box-shadow:0 0 0 1px rgba(127,209,201,0.15) inset;
+    }
+    .btn-outline{background:transparent;}
+    .btn-small{padding:8px 12px; font-size:13px;}
+
+    /* HERO */
+    .hero{
+      position:relative; min-height:100vh; display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .hero video{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      filter:saturate(1.05) contrast(1.05);
+      transform:scale(1.02);
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(70% 70% at 50% 20%, rgba(0,0,0,0.15), rgba(0,0,0,0.75)),
+        linear-gradient(to bottom, rgba(5,6,7,0.25), rgba(5,6,7,0.9));
+    }
+    .hero-content{
+      position:relative; z-index:2; text-align:center; padding:0 20px; max-width:900px;
+      transform:translateY(10px);
+    }
+    .hero-kicker{
+      color:#F2B949; letter-spacing:0.35em; text-transform:uppercase; font-size:12px;
+      margin-bottom:10px;
+    }
+    h1{
+      font-size:clamp(44px, 7vw, 92px);
+      letter-spacing:0.18em; text-transform:uppercase; margin:0 0 10px 0;
+      text-shadow:0 10px 50px rgba(0,0,0,0.65);
+    }
+    .hero-sub{
+      font-size:clamp(16px, 2.2vw, 22px); color:#F2B949; line-height:1.6;
+      margin:0 auto 22px auto; max-width:680px;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+    }
+
+    /* SECTIONS */
+    section{
+      padding:90px 20px;
+      border-top:1px solid var(--line);
+      background:var(--bg);
+    }
+    .wrap{max-width:var(--maxw); margin:0 auto;}
+    .section-title{
+      font-size:clamp(22px, 2.8vw, 30px); letter-spacing:0.08em; text-transform:uppercase;
+      margin:0 0 18px 0;
+    }
+    .section-sub{
+      color:var(--muted); line-height:1.7; font-size:16px; margin-bottom:26px;
+    }
+
+    /* ABOUT */
+    .about-grid{
+      display:grid; grid-template-columns: 1.05fr 1.2fr; gap:40px; align-items:center;
+    }
+    .about-card{
+      background:var(--bg-soft); border:1px solid var(--line); border-radius:var(--radius);
+      padding:18px; box-shadow:var(--shadow);
+    }
+    .about-bio p{line-height:1.8; color:#dfe4e7; font-size:16px;}
+    .two-col{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
+      margin-top:18px;
+    }
+    .list-box{
+      background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:16px;
+      color:#dfe4e7; line-height:1.7; font-size:15px;
+    }
+
+    /* TOUR */
+    .cards{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+    }
+    .card{
+      background:var(--bg-soft); border:1px solid var(--line); border-radius:16px; padding:18px;
+      box-shadow:var(--shadow); display:flex; flex-direction:column; gap:8px;
+    }
+    .card-title{font-weight:700; letter-spacing:0.04em; font-size:17px;}
+    .card-sub{color:var(--muted); font-size:14px;}
+    .card-actions{margin-top:auto; padding-top:10px;}
+
+    /* MUSIC */
+    .embed{
+      background:var(--bg-soft); border:1px solid var(--line); border-radius:16px; padding:10px;
+      overflow:hidden;
+    }
+    .embed iframe{width:100%; height:600px; border:0; border-radius:12px;}
+
+    /* PRESS */
+    .press-grid{
+      display:grid; grid-template-columns:1.2fr 0.8fr; gap:16px;
+    }
+    .press-box{
+      background:var(--bg-soft); border:1px solid var(--line); border-radius:16px; padding:18px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line); background:rgba(255,255,255,0.03); font-size:12px; color:var(--muted);
+      margin:0 6px 6px 0;
+    }
+
+    /* CONTACT */
+    .contact-grid{
+      display:grid; grid-template-columns:1.1fr 0.9fr; gap:16px;
+    }
+    form{
+      display:grid; gap:10px;
+    }
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--line);
+      background:#06090b; color:var(--text); font-size:15px; outline:none;
+    }
+    textarea{min-height:140px; resize:vertical}
+    input:focus, textarea:focus{border-color:rgba(127,209,201,0.6); box-shadow:0 0 0 3px rgba(127,209,201,0.12);}
+
+    .socials{
+      display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-top:8px;
+    }
+    .social{
+      background:var(--bg-soft); border:1px solid var(--line); border-radius:12px; padding:12px;
+      font-size:14px; color:#dfe4e7; display:flex; justify-content:space-between; align-items:center;
+      transition:0.2s ease;
+    }
+    .social:hover{border-color:rgba(198,167,255,0.65); transform:translateY(-1px);}
+
+    /* FOOTER */
+    footer{
+      padding:30px 20px; border-top:1px solid var(--line); background:#040506;
+      color:var(--muted); font-size:14px;
+    }
+    .footer-wrap{
+      max-width:var(--maxw); margin:0 auto; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    .footer-icons{display:flex; gap:10px;}
+    .footer-icons a{padding:6px 8px; border-radius:10px; border:1px solid var(--line);}
+
+    /* RESPONSIVE */
+    @media (max-width: 980px){
+      .about-grid, .press-grid, .contact-grid{grid-template-columns:1fr;}
+      .cards{grid-template-columns:1fr 1fr;}
+      .nav-links{display:none;}
+    }
+    @media (max-width: 640px){
+      section{padding:70px 16px;}
+      .cards{grid-template-columns:1fr;}
+      .two-col{grid-template-columns:1fr;}
+      .socials{grid-template-columns:1fr;}
+      .embed iframe{height:520px;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-wrap">
+      <div class="brand">SKYKNOCK</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#tour">Tour</a>
+        <a href="#music">Music</a>
+        <a href="#press">Press / EPK</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-small btn-outline" href="#tour">Tour Dates</a>
+        <a class="btn btn-small btn-primary" target="_blank" rel="noopener"
+           href="https://open.spotify.com/artist/1xX451Pg0jqIXu8I6FM5N8?si=TEmCUKiHQVenObUJVFYfRA">
+          Spotify
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <!-- Replace src with your hosted /assets path after download -->
+    <video autoplay muted loop playsinline preload="auto" src="assets/IMG_4488.MOV"></video>
+
+    <div class="hero-content">
+      <div class="hero-kicker">Skyknock Presents</div>
+      <h1>SKYKNOCK</h1>
+      <p class="hero-sub">
+        Presents a sonic journey through nature & emotion.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" target="_blank" rel="noopener"
+           href="https://open.spotify.com/artist/1xX451Pg0jqIXu8I6FM5N8?si=TEmCUKiHQVenObUJVFYfRA">
+          Listen on Spotify
+        </a>
+        <a class="btn btn-outline" target="_blank" rel="noopener"
+           href="https://music.apple.com/us/artist/skyknock/768288885">
+          Apple Music
+        </a>
+        <a class="btn btn-outline" href="#tour">
+          Tour Dates
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-card">
+        <!-- Replace with your best press photo -->
+        <img src="assets/skyknock-press-8.jpg" alt="Skyknock press photo" style="border-radius:12px;">
+      </div>
+
+      <div class="about-bio">
+        <h2 class="section-title">About</h2>
+        <p class="section-sub">
+          Skyknock is a British Indian music producer and DJ based in London. His work is driven by
+          a profound connection to nature, crafting immersive emotional journeys through sound.
+        </p>
+        <div class="about-card">
+          <p>
+            Beginning with chill-out and ambient roots, he evolved into progressive house, shaping intricate
+            melodies and driving rhythms. As his career progressed, he transitioned into melodic house
+            and techno — drawing inspiration from Deadmau5, Eric Prydz, and Lane 8 — guiding listeners
+            toward stillness, peace, and connection.
+          </p>
+          <p>
+            Releasing on This Never Happened, Monstercat Silk, and Purified Records, Skyknock’s music has received support from Above & Beyond, Lane 8,
+            Ferry Corsten, Infected Mushroom, Hardwell, Tiësto, Cosmic Gate, Chicane, Steve Angello,
+            and many others.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="list-box">
+            <strong>Notable Tours & Festivals — 2025</strong><br><br>
+            • This Never Happened presents… India Tour<br>
+            • Mirage – Mumbai<br>
+            • Satellite Beachside Festival – Goa<br>
+            • Mirage – Bangalore
+          </div>
+          <div class="list-box">
+            <strong>Notable Tours & Festivals — 2024</strong><br><br>
+            • This Never Happened presents… London<br>
+            • This Never Happened presents… India Tour<br>
+            • High Ultra Lounge – Bangalore<br>
+            • Satellite Beachside Festival – Goa
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOUR -->
+  <section id="tour">
+    <div class="wrap">
+      <h2 class="section-title">Tour / Shows</h2>
+      <p class="section-sub">Confirmed upcoming dates.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Bloom Nightclub — San Diego</div>
+          <div class="card-sub">February 26, 2026</div>
+          <div class="card-actions">
+            <a class="btn btn-small btn-primary" href="#" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Nova SD — San Diego</div>
+          <div class="card-sub">March 13, 2026</div>
+          <div class="card-actions">
+            <a class="btn btn-small btn-primary" href="#" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">The Sound — Los Angeles</div>
+          <div class="card-sub">April 14, 2026</div>
+          <div class="card-actions">
+            <a class="btn btn-small btn-primary" href="#" target="_blank" rel="noopener">Tickets</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="wrap">
+      <h2 class="section-title">Music / Discography</h2>
+      <p class="section-sub">Stream the latest releases and catalog.</p>
+
+      <div class="embed">
+      
+        <iframe
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO0Rg20F?utm_source=generator&theme=0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Skyknock Spotify Embed">
+</iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS / EPK -->
+  <section id="press">
+    <div class="wrap press-grid">
+      <div class="press-box">
+        <h2 class="section-title">Press / EPK</h2>
+        <p class="section-sub">
+          For press inquiries, bookings, and media assets.
+        </p>
+
+        <div style="line-height:1.8; color:#dfe4e7; font-size:16px;">
+          Supported by: Above & Beyond, Lane 8, Ferry Corsten, Infected Mushroom, Hardwell,
+          Tiësto, Cosmic Gate, Chicane, Steve Angello, and more.<br><br>
+          Labels: This Never Happened, Monstercat Silk, Purified Records
+        </div>
+
+        <div style="margin-top:14px;">
+          <span class="pill">Melodic House & Techno</span>
+          <span class="pill">Progressive House</span>
+          <span class="pill">Organic House</span>
+          <span class="pill">London / India Tours</span>
+        </div>
+
+        <div style="margin-top:18px;">
+          <a class="btn btn-primary" href="assets/Skyknock-Biography-2025.pdf" download>
+            Download EPK (PDF)
+          </a>
+        </div>
+      </div>
+
+      <div class="press-box">
+        <div style="font-weight:700; margin-bottom:10px;">Press Photos</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <img src="assets/skyknock-press-6.jpg" alt="press 2" style="border-radius:10px;">
+          <img src="assets/skyknock-press-3.jpg" alt="press 3" style="border-radius:10px;">
+          <img src="assets/skyknock-press-4.jpg" alt="press 4" style="border-radius:10px;">
+          <img src="assets/skyknock-press-7.jpg" alt="press 5" style="border-radius:10px;">
+        </div>
+        <p style="color:var(--muted); font-size:13px; margin-top:10px;">
+          Replace these images with your high-res EPK gallery set.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="press-box">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">Booking, press, and collaborations.</p>
+
+        <!-- Simple form (static). For real use, connect Formspree / Netlify Forms -->
+        <form action="https://formspree.io/f/yourFormID" method="POST">
+          <input name="name" placeholder="Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
+
+        <p style="color:var(--muted); font-size:13px; margin-top:12px;">
+          Replace the form action with your Formspree/Netlify endpoint.
+        </p>
+      </div>
+
+      <div class="press-box">
+        <div style="font-weight:700; margin-bottom:8px;">Direct Email</div>
+        <div style="color:#dfe4e7; margin-bottom:12px;">
+          <a href="mailto:info@skyknockmusic.com">info@skyknockmusic.com</a>
+        </div>
+
+        <div style="font-weight:700; margin-bottom:6px;">Socials</div>
+        <div class="socials">
+          <a class="social" target="_blank" rel="noopener" href="https://www.instagram.com/skyknockofficial">
+            Instagram <span>↗</span>
+          </a>
+          <a class="social" target="_blank" rel="noopener" href="https://www.tiktok.com/@skyknockofficial">
+            TikTok <span>↗</span>
+          </a>
+          <a class="social" target="_blank" rel="noopener" href="https://open.spotify.com/artist/1xX451Pg0jqIXu8I6FM5N8?si=TEmCUKiHQVenObUJVFYfRA">
+            Spotify <span>↗</span>
+          </a>
+          <a class="social" target="_blank" rel="noopener" href="https://music.apple.com/us/artist/skyknock/768288885">
+            Apple Music <span>↗</span>
+          </a>
+          <a class="social" target="_blank" rel="noopener" href="https://youtube.com/channel/skyknockofficial">
+            YouTube <span>↗</span>
+          </a>
+          <a class="social" target="_blank" rel="noopener" href="https://x.com/theskyknock">
+            X / Twitter <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-wrap">
+      <div>© 2025 Skyknock. All Rights Reserved.</div>
+      <div class="footer-icons">
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/skyknockofficial">IG</a>
+        <a target="_blank" rel="noopener" href="https://www.tiktok.com/@skyknockofficial">TT</a>
+        <a target="_blank" rel="noopener" href="https://open.spotify.com/artist/1xX451Pg0jqIXu8I6FM5N8?si=TEmCUKiHQVenObUJVFYfRA">SP</a>
+        <a target="_blank" rel="noopener" href="https://youtube.com/@skyknockofficial">YT</a>
+        <a target="_blank" rel="noopener" href="https://music.apple.com/us/artist/skyknock/768288885">AM</a>
+        <a target="_blank" rel="noopener" href="https://x.com/theskyknock">X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for nav anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click", e=>{
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+
+</body>
+</html>
