@@ -208,20 +208,28 @@
     .embed iframe{width:100%; height:600px; border:0; border-radius:12px;}
 
     /* PRESS */
-    .press-photo-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  grid-auto-rows: 260px;      /* tile height – tweak 240–300px to taste */
-}
 
 .press-photo-grid img{
   width:100%;
   height:100%;
-  object-fit:cover;           /* fills box, crops nicely */
-  border-radius:10px;         /* keep your rounded corners */
+  object-fit:cover;
+  border-radius:10px;
   display:block;
+  cursor:pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
+
+/* hover “pop” effect */
+.press-photo-grid img:hover{
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.65);
+  filter: brightness(1.05);
+}
+
     .press-grid{
       display:grid; grid-template-columns:1.2fr 0.8fr; gap:16px;
     }
@@ -233,6 +241,63 @@
       border:1px solid var(--line); background:rgba(255,255,255,0.03); font-size:12px; color:var(--muted);
       margin:0 6px 6px 0;
     }
+
+    /* LIGHTBOX (full-screen image viewer) */
+.lightbox{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.25s ease;
+}
+
+.lightbox.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top, rgba(0,0,0,0.65), rgba(0,0,0,0.95));
+  backdrop-filter: blur(6px);
+}
+
+.lightbox-img{
+  position:relative;
+  max-width:min(90vw, 900px);
+  max-height:min(90vh, 90vh);
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.85);
+  z-index:1;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:24px;
+  right:28px;
+  z-index:2;
+  background:rgba(0,0,0,0.68);
+  border:1px solid rgba(255,255,255,0.18);
+  color:#fff;
+  font-size:22px;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+}
+.lightbox-close:hover{
+  background:rgba(255,255,255,0.08);
+}
+
 
     /* CONTACT */
     .contact-grid{
@@ -615,8 +680,49 @@
     </div>
   </footer>
 
+  <!-- Full-screen image viewer -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop"></div>
+  <img src="" alt="Press photo enlarged" class="lightbox-img">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+</div>
+
   <script>
     
+    // Press photo lightbox
+(function(){
+  const lightbox = document.getElementById('lightbox');
+  if(!lightbox) return;
+
+  const lightboxImg = lightbox.querySelector('.lightbox-img');
+  const closeBtn   = lightbox.querySelector('.lightbox-close');
+  const backdrop   = lightbox.querySelector('.lightbox-backdrop');
+
+  // Open when any press photo is clicked
+  document.querySelectorAll('.press-photo-grid img').forEach(img=>{
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+
+  closeBtn.addEventListener('click', closeLightbox);
+  backdrop.addEventListener('click', closeLightbox);
+
+  // Close on Esc key
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape' && lightbox.classList.contains('open')){
+      closeLightbox();
+    }
+  });
+})();
+
     // Contact form UX: disable on submit + show success after redirect
     (function(){
       const form = document.querySelector('.contact-form');
