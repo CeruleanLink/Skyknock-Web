@@ -136,6 +136,21 @@
       background:var(--bg-soft); border:1px solid var(--line); border-radius:14px; padding:16px;
       color:#dfe4e7; line-height:1.7; font-size:15px;
     }
+.list-box p {
+  margin-left: 0;   /* ensures alignment */
+}
+
+.list-box ul {
+  padding-left: 0;      /* remove browser default indent */
+  margin-left: 0;       /* remove extra margin */
+  list-style-position: inside; /* aligns bullets under text */
+}
+
+.list-box li {
+  padding-left: 0;  
+  text-indent: -1.2em;     /* pull text back so wrap aligns under bullet */
+  padding-left: 1.2em;     /* keeps bullet aligned with paragraph start */
+}
 
     /* TOUR */
     .cards{
@@ -309,19 +324,26 @@
         </div>
 
         <div class="two-col">
-          <div class="list-box">
-            <strong>Notable Tours & Festivals — 2025</strong><br>This Never Happened presents… India<br>
-            &nbsp;&nbsp;⬩ Mirage – Mumbai<br>
-            &nbsp;&nbsp;⬩ Satellite Beachside Festival – Goa<br>
-            &nbsp;&nbsp;⬩ Mirage – Bangalore
-          </div>
-          <div class="list-box">
-            <strong>Notable Tours & Festivals — 2024</strong><br>
-            This Never Happened presents… London<br>
-            This Never Happened presents… India<br>
-            &nbsp;&nbsp;⬩ High Ultra Lounge – Bangalore<br>
-            &nbsp;&nbsp;⬩ Satellite Beachside Festival – Goa
-          </div>
+  <div class="list-box">
+    <strong>Notable Tours & Festivals — 2025</strong>
+    <p>This Never Happened presents…</p>
+    <ul>
+    <li>Mirage – Mumbai, India</li>
+    <li>Satellite Beachside Festival – Goa, India</li>
+    <li>Mirage – Bangalore, India</li>
+    </ul>
+  </div>
+
+  <div class="list-box">
+    <strong>Notable Tours & Festivals — 2024</strong>
+    <p>This Never Happened presents…</p>
+    <ul>
+      <li>High Ultra Lounge – Bangalore, India</li>
+      <li>Satellite Beachside Festival – Goa, India</li>
+      <li>Lafayette, London</li>
+    </ul>
+  </div>
+</div>
         </div>
       </div>
     </div>
@@ -417,7 +439,7 @@
           <img src="assets/skyknock-press-7.jpg" alt="press 5" style="border-radius:10px;">
         </div>
         <p style="color:var(--muted); font-size:13px; margin-top:10px;">
-          Replace these images with your high-res EPK gallery set.
+          
         </p>
       </div>
     </div>
