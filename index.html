@@ -273,39 +273,7 @@
     </div>
   </nav>
 
-<!--SPOTIFY API-->
-  <div class="spotify-wrap">
-  <button id="startBtn" class="start-btn">▶ Play</button>
-  <div id="embed-iframe"></div>
-</div>
-
-<script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
-<script>
-  let controller;
-
-  window.onSpotifyIframeApiReady = (IFrameAPI) => {
-    const element = document.getElementById('embed-iframe');
-    const options = {
-      uri: 'spotify:track:0pQ2qWfc6iGbdTUvEieR3u' // or playlist/album URI
-    };
-
-    IFrameAPI.createController(element, options, (ctrl) => {
-      controller = ctrl;
-    });
-  };
-
-  document.getElementById('startBtn').addEventListener('click', () => {
-    if (controller) controller.play();   // will work because it's user-initiated
-  });
-</script>
-.spotify-wrap { position: relative; }
-.start-btn {
-  margin-bottom: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background:#111; color:#fff; border:1px solid #333;
-  cursor:pointer;
-}
+  
   <!-- HERO -->
   <header class="hero" id="home">
     <!-- Replace src with your hosted /assets path after download -->
