@@ -152,6 +152,105 @@
       display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
     }
 
+    /* LATEST RELEASE STRIP UNDER HERO */
+.latest-release{
+  margin:24px auto 0;
+  max-width:780px;
+  padding:12px 16px 14px;
+  border-radius:999px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(127,209,201,0.18), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(198,167,255,0.18), transparent 55%),
+    rgba(0,0,0,0.78);
+  border:1px solid rgba(127,209,201,0.5);
+  box-shadow:0 18px 40px rgba(0,0,0,0.85);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.latest-tag{
+  font-size:10px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  opacity:0.95;
+}
+
+.latest-main{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.latest-text{
+  min-width:0;
+}
+
+.latest-title{
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
+.latest-sub{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.latest-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+/* buttons inside the strip */
+.latest-btn{
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid rgba(127,209,201,0.6);
+  background:rgba(127,209,201,0.16);
+  color:#e7ecef;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  transition:0.18s ease;
+}
+.latest-btn:hover{
+  background:#e7ecef;
+  color:#050607;
+  box-shadow:0 10px 24px rgba(0,0,0,0.8);
+  transform:translateY(-1px);
+}
+
+.latest-btn-outline{
+  background:transparent;
+  border-color:rgba(255,255,255,0.4);
+}
+.latest-btn-outline:hover{
+  background:#e7ecef;
+  color:#050607;
+}
+
+/* mobile tweaks */
+@media (max-width:640px){
+  .latest-release{
+    border-radius:18px;
+    padding:12px 12px 14px;
+  }
+  .latest-main{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
     /* SECTIONS */
     section{
       padding:90px 20px;
@@ -614,7 +713,9 @@
       <p class="hero-sub">
         Presents a sonic journey through nature & emotion.
       </p>
+      
       <div class="hero-actions">
+        <!--
         <a class="btn btn-primary" target="_blank" rel="noopener"
            href="https://open.spotify.com/artist/1xX451Pg0jqIXu8I6FM5N8?si=TEmCUKiHQVenObUJVFYfRA">
           Listen on Spotify
@@ -631,6 +732,39 @@
            href="https://soundcloud.com/the-skyknock-official">
           SoundCloud
         </a>
+      -->
+      <!-- LATEST RELEASE STRIP -->
+      <div class="latest-release">
+        <div class="latest-tag">Latest Release</div>
+
+        <div class="latest-main">
+          <div class="latest-text">
+            <!-- Update this title + label to your real release -->
+            <div class="latest-title">Echoes — Single</div>
+            <div class="latest-sub">Out now on Purified</div>
+          </div>
+
+          <div class="latest-links">
+            <a class="latest-btn" target="_blank" rel="noopener"
+               href="https://open.spotify.com/track/2KzHinm4uagbdRGtnN3J9R?si=03553ad1772f4bdb">
+              Spotify
+            </a>
+            <a class="latest-btn latest-btn-outline" target="_blank" rel="noopener"
+               href="https://music.apple.com/gb/album/echoes-single/1846110689">
+              Apple&nbsp;Music
+            </a>
+
+             <a class="latest-btn latest-btn-outline" target="_blank" rel="noopener"
+               href="https://www.beatport.com/track/echoes/22205668">
+              Beatport
+            </a>
+            <a class="latest-btn latest-btn-outline" target="_blank" rel="noopener"
+               href="https://www.youtube.com/watch?v=p2hPBviAJfo">
+              Watch&nbsp;Video
+            </a>
+             </div>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -639,7 +773,7 @@
   <section id="about">
     <div class="wrap about-grid">
       <div class="about-card">
-        <img src="assets/skyknock-press-8.jpg" alt="Skyknock press photo" style="border-radius:12px;">
+        <img src="assets/skyknock-press-8.jpg" loading="lazy" alt="Skyknock press photo" style="border-radius:12px;">
       </div>
 
       <div class="about-bio">
@@ -770,10 +904,10 @@
       <div class="press-box">
         <div style="font-weight:700; margin-bottom:10px;">Press Photos</div>
         <div class="press-photo-grid">
-          <img src="assets/skyknock-press-6.jpg" alt="press 2">
-          <img src="assets/skyknock-press-3.jpg" alt="press 3">
-          <img src="assets/skyknock-press-4.jpg" alt="press 4">
-          <img src="assets/skyknock-press-1.jpeg" alt="press 5">
+          <img src="assets/skyknock-press-6.jpg" alt="press 2" loading="lazy">
+          <img src="assets/skyknock-press-3.jpg" alt="press 3" loading="lazy">
+          <img src="assets/skyknock-press-4.jpg" alt="press 4" loading="lazy">
+          <img src="assets/skyknock-press-1.jpeg" alt="press 5" loading="lazy">
         </div>
       </div>
     </div>
@@ -928,7 +1062,7 @@
   <!-- Full-screen image viewer -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-backdrop"></div>
-    <img src="" alt="Press photo enlarged" class="lightbox-img">
+    <img src="" alt="Press photo enlarged" class="lightbox-img" loading="lazy">
     <button class="lightbox-close" aria-label="Close">&times;</button>
   </div>
 
