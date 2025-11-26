@@ -374,21 +374,88 @@
       background:radial-gradient(circle at top, rgba(127,209,201,0.16), rgba(0,0,0,0.7));
     }
 
-    /* Instagram feed wrapper */
-    .ig-feed-wrapper{
-      margin-top:4px;
-    }
-    .ig-feed-title{
-      font-size:18px;
-      letter-spacing:0.12em;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-    .ig-feed-wrapper .elfsight-app-34ed5a0c-5de4-46a4-b1da-c7d8074550b1 {
-      width:100%;
-      border-radius:14px;
-      overflow:hidden;
-    }
+   /* Instagram feed wrapper — upgraded */
+.ig-feed-wrapper{
+  margin-top:12px;
+  padding:14px 14px 16px;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at top, rgba(127,209,201,0.16), rgba(0,0,0,0.96));
+  border:1px solid rgba(127,209,201,0.38);
+  box-shadow:0 16px 36px rgba(0,0,0,0.85);
+}
+
+.ig-feed-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+
+.ig-feed-title{
+  font-size:16px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin:0;
+}
+
+.ig-feed-sub{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.ig-feed-link{
+  font-size:11px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(127,209,201,0.55);
+  background:rgba(0,0,0,0.6);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap;
+  transition:0.18s ease;
+}
+.ig-feed-link span{
+  font-size:10px;
+  opacity:0.8;
+}
+.ig-feed-link:hover{
+  background:var(--accent);
+  color:#000;
+  border-color:var(--accent);
+  transform:translateY(-1px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.85);
+}
+
+/* NEW: inner shell to slightly shrink the widget */
+.ig-feed-inner{
+  border-radius:14px;
+  overflow:hidden;
+  background:#000;
+  /* scale down the whole widget so the badge feels smaller but still visible */
+  transform:scale(0.96);
+  transform-origin:top center;
+}
+
+/* keep the Elfsight app full inside the inner shell */
+.ig-feed-inner > .elfsight-app-34ed5a0c-5de4-46a4-b1da-c7d8074550b1{
+  width:100%;
+}
+
+/* tiny tweak for small screens */
+@media (max-width:640px){
+  .ig-feed-header{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
 
     /* Contact form status + disabled button (scoped) */
     .contact-form button[disabled]{
@@ -746,11 +813,25 @@
       <!-- RIGHT: SOCIALS + INSTAGRAM FEED -->
       <div class="press-box">
         <h2 class="section-title">Socials</h2>
+<div class="ig-feed-wrapper">
+  <div class="ig-feed-header">
+    <div>
+      <div class="ig-feed-title">Instagram</div>
+      <div class="ig-feed-sub">@skyknockofficial — latest posts</div>
+    </div>
+    <a class="ig-feed-link" target="_blank" rel="noopener" href="https://www.instagram.com/skyknockofficial">
+      View Feed <span>↗</span>
+    </a>
+  </div>
 
-        <div class="ig-feed-wrapper">
-          <div class="ig-feed-title">Instagram Feed</div>
-          <div class="elfsight-app-34ed5a0c-5de4-46a4-b1da-c7d8074550b1" data-elfsight-app-lazy></div>
-        </div>
+  <div class="ig-feed-inner">
+    
+<iframe src="https://snapwidget.com/embed/1113360" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; " title="Posts from Instagram"></iframe>
+    
+  </div>
+</div>
+
+
 
         <div class="socials">
           <a class="social" target="_blank" rel="noopener" href="https://www.instagram.com/skyknockofficial">
@@ -925,7 +1006,7 @@
   </script>
 
   <!-- Elfsight script (Instagram feed) -->
-  <script src="https://elfsightcdn.com/platform.js" async></script>
+ <script src="https://snapwidget.com/js/snapwidget.js"></script>
 
 </body>
 </html>
