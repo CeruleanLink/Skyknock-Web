@@ -152,7 +152,7 @@
       display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
     }
 
-    /* LATEST RELEASE STRIP UNDER HERO */
+/* LATEST RELEASE STRIP UNDER HERO */
 .latest-release{
   margin:24px auto 0;
   max-width:780px;
@@ -240,26 +240,41 @@
   color:#050607;
 }
 
+/* mobile tweaks for latest-release */
 @media (max-width:640px){
 
+  .latest-release{
+    max-width:100%;
+    border-radius:22px;
+    padding:10px 12px 12px;
+  }
+
+  /* put text on its own line, buttons on a single row under it */
   .latest-main{
     flex-direction:column;
     align-items:flex-start;
     gap:10px;
   }
 
-  /* prevent wrapping & allow shrinking */
   .latest-links{
-    flex-wrap:nowrap;
-    overflow-x:auto;      /* allows horizontal scroll if truly needed */
-    -webkit-overflow-scrolling: touch;
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap;          /* keep buttons on one line */
+    justify-content:space-between;
+    gap:6px;
   }
 
   .latest-btn{
-    flex-shrink:1;        /* lets buttons compress instead of wrapping */
-    white-space:nowrap;   /* prevent multi-line labels */
+    flex:1 1 0;                /* let each button share the row */
+    min-width:0;               /* allow shrinking below min-content */
+    font-size:10px;
+    letter-spacing:0.09em;
+    padding:6px 6px;
+    white-space:normal;        /* text can wrap inside if absolutely needed */
+    text-align:center;
   }
 }
+
 
     /* SECTIONS */
     section{
