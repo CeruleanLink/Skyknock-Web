@@ -249,37 +249,37 @@
     padding:10px 12px 12px;
   }
 
-  /* put text on its own line, buttons on a single row under it */
+  /* text block centered above the buttons */
   .latest-main{
     flex-direction:column;
-    align-items:center;   /* was flex-start */
+    align-items:center;
     gap:10px;
-    text-align:center;    /* center the title + subtitle text */
+    text-align:center;   /* centers “Echoes — Single / Out now on Purified” */
   }
 
   .latest-text{
-    width:100%;           /* helps keep it centered nicely */
+    width:100%;
   }
 
   .latest-links{
     width:100%;
     display:flex;
-    flex-wrap:nowrap;     
-    justify-content:space-between;
-    gap:6px;
+    flex-wrap:wrap;      /* allow multiple rows */
+    justify-content:center;
+    gap:8px;
   }
 
   .latest-btn{
-    flex:1 1 0;
+    flex:1 1 calc(50% - 8px);   /* 2 buttons per row */
+    max-width:calc(50% - 8px);
     min-width:0;
-    font-size: clamp(9px, 2.8vw, 10px);  /* ⬅ slightly smaller + responsive */
+    font-size:10px;
     letter-spacing:0.09em;
-    padding:6px 4px;
-    white-space:nowrap;                  /* prevent wrapping */
+    padding:6px 6px;
+    white-space:nowrap;         /* keep label on one line */
     text-align:center;
   }
 }
-
 
     /* SECTIONS */
     section{
@@ -855,11 +855,11 @@
   <section id="tour">
     <div class="wrap">
       <h2 class="section-title">Tour / Shows</h2>
-      <p class="section-sub">Confirmed upcoming dates.</p>
+      <p class="section-sub">Upcoming dates.</p>
 
       <div class="cards">
         <div class="card">
-          <div class="card-title">Bloom Nightclub — San Diego</div>
+          <div class="card-title">The Mockingbird — Denver, CO</div>
           <div class="card-sub">TBD</div>
           <div class="card-actions">
             <a class="btn btn-small btn-primary" href="#" target="_blank" rel="noopener">Tickets</a>
@@ -867,21 +867,14 @@
         </div>
 
         <div class="card">
-          <div class="card-title">Nova SD — San Diego</div>
+          <div class="card-title">Town Hall Collaborative — Denver, CO</div>
           <div class="card-sub">TBD</div>
           <div class="card-actions">
             <a class="btn btn-small btn-primary" href="#" target="_blank" rel="noopener">Tickets</a>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-title">The Sound — Los Angeles</div>
-          <div class="card-sub">TBD</div>
-          <div class="card-actions">
-            <a class="btn btn-small btn-primary" href="#" target="_blank" rel="noopener">Tickets</a>
-          </div>
-        </div>
-      </div>
+       
     </div>
   </section>
 
