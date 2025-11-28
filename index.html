@@ -240,17 +240,27 @@
   color:#050607;
 }
 
-/* mobile tweaks */
 @media (max-width:640px){
-  .latest-release{
-    border-radius:18px;
-    padding:12px 12px 14px;
-  }
+
   .latest-main{
     flex-direction:column;
     align-items:flex-start;
+    gap:10px;
+  }
+
+  /* prevent wrapping & allow shrinking */
+  .latest-links{
+    flex-wrap:nowrap;
+    overflow-x:auto;      /* allows horizontal scroll if truly needed */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .latest-btn{
+    flex-shrink:1;        /* lets buttons compress instead of wrapping */
+    white-space:nowrap;   /* prevent multi-line labels */
   }
 }
+
     /* SECTIONS */
     section{
       padding:90px 20px;
