@@ -114,32 +114,41 @@
     .btn-outline{background:transparent;}
     .btn-small{padding:8px 12px; font-size:13px;}
 
-    /* HERO */
-    .hero{
-      position:relative; min-height:100vh; display:grid; place-items:center;
-      overflow:hidden;
-    }
+    
+   /* HERO */
+.hero{
+  position: relative;
+  min-height: 100svh;          /* responsive viewport height */
+  height: auto;                /* ⬅ allows hero to grow/shrink with zoom */
+  padding: 120px 0 90px;       /* space for nav + content */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
 
-    .hero .hero-media{
+
+ .hero img.hero-media{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  transform:scale(1.02);
-  filter: saturate(1.05) contrast(1.05);
+  object-position:center;
+  transform: scale(clamp(1.02, 1vw + 1.02, 1.10));
+  filter: brightness(1.08) saturate(1.05) contrast(1.05);
   z-index:0;
   pointer-events:none;
   
-  filter: brightness(1.12) saturate(1.05) contrast(1.05);
-
 }
 
+
+/*
     .hero video{
       position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
       filter:saturate(1.05) contrast(1.05);
       transform:scale(1.02);
     }
+    */
  .hero::after{
   content:"";
   position:absolute;
@@ -150,9 +159,14 @@
 }
 
     .hero-content{
-      position:relative; z-index:2; text-align:center; padding:0 20px; max-width:900px;
-      transform:translateY(10px);
-    }
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: min(900px, 100%);
+  padding: 0 20px;
+  transform: translateY(10px);
+}
+
     .hero-kicker{
       color:#F2B949; letter-spacing:0.35em; text-transform:uppercase; font-size:12px;
       margin-bottom:10px;
@@ -189,8 +203,8 @@
 }
 
 .latest-tag{
-  font-size:10px;
-  letter-spacing:0.22em;
+  font-size:11px;
+  letter-spacing:0.28em;
   text-transform:uppercase;
   color:var(--muted);
   opacity:0.95;
@@ -202,23 +216,28 @@
   justify-content:space-between;
   gap:16px;
   flex-wrap:wrap;
+  align-items: flex-start;   /* was center */
 }
 
 .latest-text{
   min-width:0;
+   position: relative;
+  top: -2px;   /* try -2px to -4px */
 }
 
 .latest-title{
-  font-size:15px;
+  font-size:18px;
   font-weight:600;
-  letter-spacing:0.08em;
+  letter-spacing:0.10em;
   text-transform:uppercase;
+  line-height: 1.1;
 }
 
 .latest-sub{
-  font-size:13px;
+  font-size:15px;
   color:var(--muted);
-  margin-top:2px;
+  margin-top: 0;            /* was 2px */
+  line-height: 1.2;
 }
 
 .latest-links{
@@ -229,10 +248,10 @@
 
 /* buttons inside the strip */
 .latest-btn{
-  font-size: clamp(9px, 0.8vw, 11px);   /* ⬅ responsive font size */
-  letter-spacing:0.16em;
+  font-size: clamp(13px, 0.8vw, 11px);   /* ⬅ responsive font size */
+  letter-spacing:0.14em;
   text-transform:uppercase;
-  padding:7px 12px;
+  padding:10px 16px;
   border-radius:999px;
   border:1px solid rgba(127,209,201,0.6);
   background:rgba(127,209,201,0.16);
@@ -263,9 +282,9 @@
 @media (max-width:640px){
 
   .latest-release{
-    max-width:100%;
-    border-radius:22px;
-    padding:10px 12px 12px;
+    max-width: 980px;          /* was 780 */
+  padding: 18px 22px 20px;   /* was ~12/16/14 */
+  border-radius: 999px;
   }
 
   /* text block centered above the buttons */
@@ -756,7 +775,7 @@
   <!-- HERO -->
   <header class="hero" id="home">
     <!--<video autoplay muted loop playsinline preload="auto" src="assets/skyknock hero.mp4"></video>-->
-    <img class="hero-media" src="assets/yonderstill.jpg" alt="Skyknock hero image">
+    <img class="hero-media" src="assets/Skyknock---S.K.Y-(Artwork).jpg" alt="Skyknock hero image">
 
 
     <div class="hero-content">
