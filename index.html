@@ -282,9 +282,13 @@
 @media (max-width:640px){
 
   .latest-release{
-    max-width: 980px;          /* was 780 */
-  padding: 18px 22px 20px;   /* was ~12/16/14 */
-  border-radius: 999px;
+  border: none;                              /* remove outline */
+    border-radius: 22px;                       /* optional: less “pill” */
+    background:
+      radial-gradient(circle at 0% 0%, rgba(127,209,201,0.18), transparent 55%),
+      radial-gradient(circle at 100% 100%, rgba(198,167,255,0.18), transparent 55%),
+      rgba(0,0,0,0.82);                        /* keep it readable */
+    box-shadow: 0 18px 40px rgba(0,0,0,0.85);  /* keep depth */
   }
 
   /* text block centered above the buttons */
