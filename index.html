@@ -115,16 +115,16 @@
     .btn-small{padding:8px 12px; font-size:13px;}
 
     
-   /* HERO */
 .hero{
-  position: relative;
-  min-height: 100svh;          /* responsive viewport height */
-  height: auto;                /* ⬅ allows hero to grow/shrink with zoom */
-  padding: 120px 0 90px;       /* space for nav + content */
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+  position:relative;
+  height:100svh;          /* ⬅ fixed hero height */
+  min-height:100svh;
+  padding:120px 0 90px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
 }
+
 
 
  .hero img.hero-media{
@@ -134,12 +134,12 @@
   height:100%;
   object-fit:cover;
   object-position:center;
-  transform: scale(clamp(1.02, 1vw + 1.02, 1.10));
+  transform:none;                 /* ⬅ no zoom */
   filter: brightness(1.08) saturate(1.05) contrast(1.05);
   z-index:0;
   pointer-events:none;
-  
 }
+
 
 
 /*
@@ -740,7 +740,6 @@
     @media (max-width: 640px){
       .cards{grid-template-columns:1fr;}
       .socials{grid-template-columns:1fr;}
-      .hero{min-height:90vh;}
       .hero-sub{font-size:15px;}
 
       h1{
