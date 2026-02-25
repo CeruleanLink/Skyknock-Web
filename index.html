@@ -87,6 +87,8 @@
       width:auto;
     }
 
+
+
     .nav-cta{ margin-left:auto; display:flex; gap:8px; }
 
     .nav-links{
@@ -227,6 +229,11 @@
   line-height:1.4;
   margin:0;                          /* ✅ removes the big gap */
   max-width:680px;
+}
+ /* hides text without collapsing layout */
+.hide-text-keep-space{
+  color: transparent !important;
+  text-shadow: none !important;
 }
     .hero-actions{
       display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
@@ -833,7 +840,7 @@ margin:14px auto 0;
   <img src="assets/skyknock-logo.png" alt="Skyknock logo" class="hero-logo">
 </div>
 
-  <p class="hero-sub">
+  <p class="hero-sub hide-text-keep-space">
     Presents a sonic journey through nature & emotion.
   </p>
       
@@ -1260,6 +1267,7 @@ margin:14px auto 0;
 
 </body>
 </html>
+
 
 
 
