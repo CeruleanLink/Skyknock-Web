@@ -141,12 +141,24 @@
   overflow:hidden;
 }
 
+/* Holds space so the stuff below doesn't move */
+.hero-logo-wrap{
+  position:relative;
+  width:100%;
+  height: clamp(84px, 10vh, 120px);  /* <-- slot height (layout anchor) */
+  margin:0;                          /* no extra gap */
+}
+
+/* Big logo, centered, can overflow upward without pushing content down */
 .hero-logo{
-  display:block;
-  margin:0 auto;                     /* ✅ no extra bottom margin */
-  width:min(560px, 78vw);            /* slightly smaller so it fits better */
-  max-width:560px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%) translateY(-18px); /* pulls logo UP */
+  width:min(760px, 92vw);            /* <-- make it bigger */
+  max-width:760px;
   height:auto;
+  pointer-events:none;
 }
 
 .visually-hidden {
@@ -817,7 +829,9 @@ margin:14px auto 0;
     
     <div class="hero-content">
        <h1 class="visually-hidden">Skyknock</h1>
+  <div class="hero-logo-wrap" aria-hidden="true">
   <img src="assets/skyknock-logo.png" alt="Skyknock logo" class="hero-logo">
+</div>
 
   <p class="hero-sub">
     Presents a sonic journey through nature & emotion.
@@ -1246,6 +1260,7 @@ margin:14px auto 0;
 
 </body>
 </html>
+
 
 
 
