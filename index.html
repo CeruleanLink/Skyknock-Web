@@ -128,11 +128,12 @@
   overflow:hidden;
 }
 
-.hero-logo {
-  max-width: 420px;   /* adjust to taste */
-  width: 100%;
-  height: auto;
-  margin-bottom: 20px;
+.hero-logo{
+  display:block;              /* keep it block */
+  margin:0 auto 22px auto;    /* ✅ centers it */
+  width:min(620px, 82vw);     /* ✅ bigger + responsive */
+  max-width:620px;
+  height:auto;
 }
 
 .visually-hidden {
@@ -1224,6 +1225,7 @@
 
 </body>
 </html>
+
 
 
 
