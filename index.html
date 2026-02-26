@@ -147,26 +147,21 @@
 .hero-logo-wrap{
   position:relative;
   width:100%;
-  height: clamp(140px, 22vh, 260px);   /* ✅ bigger “reserved” area */
-  margin:0;
-  overflow: visible;                   /* ✅ allow big logo to spill */
+  height: clamp(84px, 10vh, 120px);  /* <-- slot height (layout anchor) */
+  margin:0;                          /* no extra gap */
 }
 
-.hero-logo-video{
+/* Big logo, centered, can overflow upward without pushing content down */
+.hero-logo{
   position:absolute;
   left:50%;
   top:50%;
-  transform:translate(-50%, -50%) translateY(-10px);
-
-  /* ✅ smaller on desktop, still responsive */
-  width: clamp(480px, 65vw, 820px);
-
+  transform:translate(-50%, -50%) translateY(-18px); /* pulls logo UP */
+  width:min(760px, 92vw);            /* <-- make it bigger */
+  max-width:760px;
   height:auto;
-  z-index:3;
   pointer-events:none;
 }
-/* If your overlay is on top of the logo, make sure content stays above */
-.hero-content{ z-index: 4; }
 
 .visually-hidden {
   position: absolute;
@@ -842,13 +837,7 @@ margin:14px auto 0;
     <div class="hero-content">
        <h1 class="visually-hidden">Skyknock</h1>
   <div class="hero-logo-wrap" aria-hidden="true">
-  <video class="hero-logo-video" autoplay muted loop playsinline>
-  <!-- Chrome / Edge / Firefox -->
-  <source src="assets/skyknock-logo-cropped.webm" type="video/webm">
-
-   <!-- Safari / iOS (alpha HEVC) -->
-  <source src="assets/skyknock-logo-alpha.mp4" type='video/mp4; codecs="hvc1"'>
-</video>
+  <img src="assets/skyknock-logo.png" alt="Skyknock logo" class="hero-logo">
 </div>
 
   <p class="hero-sub hide-text-keep-space">
@@ -1278,14 +1267,6 @@ margin:14px auto 0;
 
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 
