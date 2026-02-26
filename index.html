@@ -152,12 +152,12 @@
 }
 
 /* Big logo, centered, can overflow upward without pushing content down */
-.hero-logo{
+.hero-logo-video{
   position:absolute;
   left:50%;
   top:50%;
-  transform:translate(-50%, -50%) translateY(-18px); /* pulls logo UP */
-  width:min(760px, 92vw);            /* <-- make it bigger */
+  transform:translate(-50%, -50%) translateY(-18px);
+  width:min(760px, 92vw);
   max-width:760px;
   height:auto;
   pointer-events:none;
@@ -837,7 +837,13 @@ margin:14px auto 0;
     <div class="hero-content">
        <h1 class="visually-hidden">Skyknock</h1>
   <div class="hero-logo-wrap" aria-hidden="true">
-  <img src="assets/skyknock-logo.png" alt="Skyknock logo" class="hero-logo">
+  <video class="hero-logo-video" autoplay muted loop playsinline>
+    <!-- Safari / iOS alpha -->
+    <source src="assets/skyknock-logo-safari.mov" type="video/mp4; codecs=hvc1">
+    
+    <!-- Chrome / Edge / Firefox alpha -->
+    <source src="assets/skyknock-logo.webm" type="video/webm">
+  </video>
 </div>
 
   <p class="hero-sub hide-text-keep-space">
@@ -1267,6 +1273,7 @@ margin:14px auto 0;
 
 </body>
 </html>
+
 
 
 
