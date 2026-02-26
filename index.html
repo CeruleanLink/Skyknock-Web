@@ -152,19 +152,17 @@
   overflow: visible;                   /* ✅ allow big logo to spill */
 }
 
-/* Big logo, centered */
 .hero-logo-video{
   position:absolute;
   left:50%;
   top:50%;
   transform:translate(-50%, -50%) translateY(-10px);
-  width:min(1100px, 96vw);             /* ✅ MUCH bigger */
-  max-width: 1300px;
+  width:min(1100px, 96vw);
+  max-width:1100px;
   height:auto;
-  z-index:3;                           /* ✅ above overlays */
+  z-index:3;
   pointer-events:none;
 }
-
 /* If your overlay is on top of the logo, make sure content stays above */
 .hero-content{ z-index: 4; }
 
@@ -843,12 +841,9 @@ margin:14px auto 0;
        <h1 class="visually-hidden">Skyknock</h1>
   <div class="hero-logo-wrap" aria-hidden="true">
   <video class="hero-logo-video" autoplay muted loop playsinline>
-    <!-- Safari / iOS alpha -->
-    <source src="assets/skyknock-logo-safari.mov" type="video/mp4; codecs=hvc1">
-    
-    <!-- Chrome / Edge / Firefox alpha -->
-    <source src="assets/skyknock-logo.webm" type="video/webm">
-  </video>
+  <source src="assets/skyknock-logo-cropped-safari.mov" type="video/mp4; codecs=hvc1">
+  <source src="assets/skyknock-logo-cropped.webm" type="video/webm">
+</video>
 </div>
 
   <p class="hero-sub hide-text-keep-space">
@@ -1278,6 +1273,7 @@ margin:14px auto 0;
 
 </body>
 </html>
+
 
 
 
