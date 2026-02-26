@@ -157,8 +157,10 @@
   left:50%;
   top:50%;
   transform:translate(-50%, -50%) translateY(-10px);
-  width:min(1100px, 96vw);
-  max-width:1100px;
+
+  /* ✅ smaller on desktop, still responsive */
+  width: clamp(520px, 72vw, 900px);
+
   height:auto;
   z-index:3;
   pointer-events:none;
@@ -841,11 +843,11 @@ margin:14px auto 0;
        <h1 class="visually-hidden">Skyknock</h1>
   <div class="hero-logo-wrap" aria-hidden="true">
   <video class="hero-logo-video" autoplay muted loop playsinline>
-  <!-- Safari / iOS -->
-  <source src="assets/skyknock-logo-cropped-safari-25mb.mov" type="video/quicktime">
-
   <!-- Chrome / Edge / Firefox -->
   <source src="assets/skyknock-logo-cropped.webm" type="video/webm">
+
+   <!-- Safari / iOS (alpha HEVC) -->
+  <source src="assets/skyknock-logo-alpha.mp4" type='video/mp4; codecs="hvc1"'>
 </video>
 </div>
 
@@ -1276,6 +1278,7 @@ margin:14px auto 0;
 
 </body>
 </html>
+
 
 
 
